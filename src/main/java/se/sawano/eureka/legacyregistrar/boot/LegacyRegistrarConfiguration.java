@@ -35,7 +35,7 @@ import static se.sawano.java.commons.lang.validate.Validate.noNullElements;
 
 @Configuration
 @EnableConfigurationProperties({LegacyInstances.class, EurekaProperties.class})
-public class Config {
+public class LegacyRegistrarConfiguration {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
