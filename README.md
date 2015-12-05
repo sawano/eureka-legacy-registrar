@@ -1,4 +1,9 @@
 #eureka-legacy-registrar
+[![][travis img]][travis]
+[![][maven img]][maven]
+[![][release img]][release]
+[![][license img]][license]
+
 A small lib to allow registration of legacy applications in [Eureka](https://github.com/Netflix/eureka) service discovery. It also comes with (optional) Spring Boot support with
 annotations making it very easy to use with Spring Boot applications.
  
@@ -127,3 +132,12 @@ eureka.legacy.app2.healthCheckUrl=http://10.0.1.18:8080/manage/health
 eureka.legacy.app2.statusPageUrl=http://10.0.1.18:8080/manage/info
 eureka.legacy.app2.traffic.enabled=true
 ```
+
+[travis]:https://travis-ci.org/sawano/eureka-legacy-registrar
+[travis img]:https://travis-ci.org/sawano/eureka-legacy-registrar.svg?branch=master
+[maven]:http://search.maven.org/#search|gav|1|g:"se.sawano.eureka"%20AND%20a:"legacy-registrar"
+[maven img]:https://maven-badges.herokuapp.com/maven-central/se.sawano.eureka/legacy-registrar/badge.svg
+[release]:https://github.com/sawano/eureka-legacy-registrar/releases
+[release img]:https://img.shields.io/github/release/sawano/eureka-legacy-registrar.svg
+[license]:LICENSE
+[license img]:https://img.shields.io/badge/License-Apache%202-blue.svg
