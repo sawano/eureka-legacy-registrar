@@ -133,6 +133,24 @@ eureka.legacy.app2.statusPageUrl=http://10.0.1.18:8080/manage/info
 eureka.legacy.app2.traffic.enabled=true
 ```
 
+##Releases
+
+Releases are available at the Maven central repository. Or you can just use the source code directly if you prefer that.
+
+####Maven
+```xml
+<dependency>
+    <groupId>se.sawano.eureka</groupId>
+    <artifactId>legacy-registrar</artifactId>
+    <version>0.0.1</version>
+</dependency>
+```
+
+####Gradle
+```groovy
+'se.sawano.eureka:legacy-registrar:0.0.1'
+```
+
 [travis]:https://travis-ci.org/sawano/eureka-legacy-registrar
 [travis img]:https://travis-ci.org/sawano/eureka-legacy-registrar.svg?branch=master
 [maven]:http://search.maven.org/#search|gav|1|g:"se.sawano.eureka"%20AND%20a:"legacy-registrar"
