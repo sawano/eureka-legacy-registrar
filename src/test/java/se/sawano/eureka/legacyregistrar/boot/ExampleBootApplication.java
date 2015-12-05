@@ -24,7 +24,7 @@ import java.util.concurrent.CountDownLatch;
 
 @Configuration
 @EnableAutoConfiguration
-@EnableLegacyRegistrar
+@EnableEurekaLegacyRegistrar
 public class ExampleBootApplication {
 
     public static void main(String[] args) throws InterruptedException {

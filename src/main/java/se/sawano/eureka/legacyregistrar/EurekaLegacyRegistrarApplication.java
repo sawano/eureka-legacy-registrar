@@ -22,6 +22,7 @@ import com.netflix.config.DynamicStringProperty;
 import com.netflix.discovery.DefaultEurekaClientConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import se.sawano.eureka.legacyregistrar.boot.EnableEurekaLegacyRegistrar;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -34,7 +35,7 @@ import static java.util.Collections.unmodifiableList;
 import static se.sawano.java.commons.lang.validate.Validate.isFalse;
 
 /**
- * Use this class if you are running a pure Eureka solution. If you are using Spring Boot please see {@link se.sawano.eureka.legacyregistrar.boot.EnableLegacyRegistrar}.
+ * Use this class if you are running a pure Eureka solution. If you are using Spring Boot please see {@link EnableEurekaLegacyRegistrar}.
  */
 public class EurekaLegacyRegistrarApplication {
 

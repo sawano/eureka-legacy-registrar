@@ -28,4 +28,4 @@ import java.lang.annotation.*;
 @Documented
 @Inherited
 @Import(Config.class)
-public @interface EnableLegacyRegistrar {}
+public @interface EnableEurekaLegacyRegistrar {}

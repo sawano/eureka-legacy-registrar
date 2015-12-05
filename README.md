@@ -19,12 +19,12 @@ impossible to affect either code or deployments.
 Check out the example code in the test package for code examples.
 
 ###Spring Boot example
-Just add the `@EnableLegacyRegistrar`annotation and appropriate configuration in your `application.yml` and you are good to go.
+Just add the `@EnableEurekaLegacyRegistrar`annotation and appropriate configuration in your `application.yml` and you are good to go.
 
 Eg.:
 
 ```java
-@EnableLegacyRegistrar
+@EnableEurekaLegacyRegistrar
 @SpringBootApplication
 public class Application {
 
