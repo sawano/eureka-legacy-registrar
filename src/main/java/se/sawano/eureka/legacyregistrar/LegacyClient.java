@@ -17,7 +17,6 @@
 package se.sawano.eureka.legacyregistrar;
 
 import com.netflix.appinfo.ApplicationInfoManager;
-import com.netflix.appinfo.EurekaInstanceConfig;
 import com.netflix.discovery.DiscoveryClient;
 import com.netflix.discovery.EurekaClientConfig;
 
@@ -30,15 +29,15 @@ import static se.sawano.java.commons.lang.validate.Validate.validState;
 public class LegacyClient {
 
     private DiscoveryClient client;
-    private final EurekaInstanceConfig instanceConfig;
+    private final LegacyInstanceConfig instanceConfig;
     private final EurekaClientConfig clientConfig;
 
-    public LegacyClient(final EurekaInstanceConfig instanceConfig, final EurekaClientConfig clientConfig) {
+    public LegacyClient(final LegacyInstanceConfig instanceConfig, final EurekaClientConfig clientConfig) {
         this.instanceConfig = notNull(instanceConfig);
         this.clientConfig = notNull(clientConfig);
     }
 
-    public EurekaInstanceConfig instanceConfig() {
+    public LegacyInstanceConfig instanceConfig() {
         return instanceConfig;
     }
 
@@ -48,6 +47,7 @@ public class LegacyClient {
 
     @PostConstruct
     public void init() {
+        validState(client == null, "Client has already been initialized");
         final ApplicationInfoManager appInfoManager = new ApplicationInfoManager(instanceConfig);
         client = new DiscoveryClient(appInfoManager, clientConfig);
     }
