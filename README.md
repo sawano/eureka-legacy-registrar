@@ -1,5 +1,6 @@
 #eureka-legacy-registrar
-A small lib to allow registration of legacy applications in [Eureka](https://github.com/Netflix/eureka) service discovery.
+A small lib to allow registration of legacy applications in [Eureka](https://github.com/Netflix/eureka) service discovery. It also comes with (optional) Spring Boot support with
+annotations making it very easy to use with Spring Boot applications.
  
 ##Typical use cases
 Some typical use cases where the `eureka-legacy-registrar` lib can be very useful:
@@ -77,6 +78,8 @@ eureka:
 ###Non-Spring Boot example
 Create an instance of `EurekaLegacyRegistrarApplication` and place your configuration in a file called `eureka-client.properties`.
 
+Eg.:
+
 ```java
 final EurekaLegacyRegistrarApplication application = new EurekaLegacyRegistrarApplication();
 application.start();
@@ -106,10 +109,8 @@ eureka.legacy.app0.traffic.enabled=true
 
 eureka.legacy.app1.name=legacy-app
 eureka.legacy.app1.vipAddress=legacy-app
-# instanceId should be unique per instance
 eureka.legacy.app1.instanceId=10.0.1.15:legacy-app:2
 eureka.legacy.app1.hostName=10.0.1.18
-# optional property ipAddress
 eureka.legacy.app1.ipAddress=10.0.1.18
 eureka.legacy.app1.port=8080
 eureka.legacy.app1.healthCheckUrl=http://10.0.1.18:8081/manage/health
@@ -118,10 +119,8 @@ eureka.legacy.app1.traffic.enabled=true
 
 eureka.legacy.app2.name=legacy-app-2
 eureka.legacy.app2.vipAddress=legacy-app-2
-# instanceId should be unique per instance
 eureka.legacy.app2.instanceId=10.0.1.15:legacy-app-2:2
 eureka.legacy.app2.hostName=10.0.1.18
-# optional property ipAddress
 eureka.legacy.app2.ipAddress=10.0.1.18
 eureka.legacy.app2.port=8180
 eureka.legacy.app2.healthCheckUrl=http://10.0.1.18:8080/manage/health
