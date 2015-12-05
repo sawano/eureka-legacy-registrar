@@ -66,11 +66,11 @@ public class LegacyRegistrarConfiguration {
         return client;
     }
 
-    private void shutdown(final LegacyClient setup) {
+    private void shutdown(final LegacyClient client) {
         try {
-            setup.shutdown();
+            client.shutdown();
         } catch (Exception e) {
-            // TODO cleanup/fix
+            // TODO cleanup/fix. Possibly same as: https://github.com/Netflix/eureka/issues/704
             e.printStackTrace();
         }
     }

@@ -116,7 +116,7 @@ public class EurekaLegacyRegistrarApplication {
         try {
             setup.shutdown();
         } catch (Exception e) {
-            // TODO cleanup/fix
+            // TODO cleanup/fix. Possibly same as: https://github.com/Netflix/eureka/issues/704
             e.printStackTrace();
         }
     }
