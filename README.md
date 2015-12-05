@@ -5,7 +5,7 @@
 [![][license img]][license]
 
 A small lib to allow registration of legacy applications in [Eureka](https://github.com/Netflix/eureka) service discovery. It also comes with (optional) Spring Boot support with
-annotations making it very easy to use with Spring Boot applications.
+annotations making it very easy to use together with Spring Boot.
  
 ##Typical use cases
 Some typical use cases where the `eureka-legacy-registrar` lib can be very useful:
