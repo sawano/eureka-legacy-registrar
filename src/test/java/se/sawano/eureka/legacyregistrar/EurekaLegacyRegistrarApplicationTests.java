@@ -16,7 +16,10 @@
 
 package se.sawano.eureka.legacyregistrar;
 
+import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.concurrent.CountDownLatch;
 
 import static org.junit.Assert.assertFalse;
 
@@ -25,9 +28,15 @@ public class EurekaLegacyRegistrarApplicationTests {
     volatile boolean failed = false;
 
     @Test
-    public void should_start_application() throws Exception {
+    public void should_create_and_start_application() throws Exception {
         final EurekaLegacyRegistrarApplication application = new EurekaLegacyRegistrarApplication();
-        final Thread thread = new Thread(application::start);
+        final Thread thread = new Thread(() -> {
+            application.start();
+            try {
+                new CountDownLatch(1).await();
+            } catch (InterruptedException e) {
+            }
+        });
         thread.setUncaughtExceptionHandler((t, e) -> {
             e.printStackTrace();
             failed = true;
@@ -39,6 +48,11 @@ public class EurekaLegacyRegistrarApplicationTests {
         }
         assertFalse("Application failed to start", failed);
         thread.interrupt();
+    }
 
+    @Test
+    @Ignore("Just here to serve as an example")
+    public void should_start_application() throws Exception {
+        EurekaLegacyRegistrarApplication.main(new String[0]);
     }
 }

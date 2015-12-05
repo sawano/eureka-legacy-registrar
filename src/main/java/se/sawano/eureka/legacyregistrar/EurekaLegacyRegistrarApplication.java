@@ -40,7 +40,13 @@ import static se.sawano.java.commons.lang.validate.Validate.isFalse;
 public class EurekaLegacyRegistrarApplication {
 
     public static void main(String[] args) {
-        new EurekaLegacyRegistrarApplication().start();
+        final EurekaLegacyRegistrarApplication application = new EurekaLegacyRegistrarApplication();
+        application.start();
+        try {
+            new CountDownLatch(1).await();
+        } catch (InterruptedException e) {
+            application.shutdown();
+        }
     }
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -48,15 +54,9 @@ public class EurekaLegacyRegistrarApplication {
     private final List<LegacyClient> legacyClients = new ArrayList<>();
 
     public void start() {
-        try {
-            init();
-            started.getAndSet(true);
-            logger.debug("Started successfully");
-            new CountDownLatch(1).await();
-        } catch (InterruptedException e) {
-            logger.debug("Thread interrupted. Shutting down...");
-            shutdown();
-        }
+        init();
+        started.getAndSet(true);
+        logger.debug("Started successfully");
     }
 
     public boolean isStarted() {
