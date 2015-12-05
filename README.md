@@ -16,7 +16,7 @@ than having a mix of using service discovery and the previous legacy solutions o
 
 This also allows for the existing services to get Eureka-enabled independently and in a pace suitable for the respective development team. 
 
-###You are unable to affect legacy application
+###You are unable to affect legacy applications
 If you, for whatever reason, have an existing application that you are unable to have register itself in Eureka, either by changing its codebase or by having a side-car process, then
 the `eureka-legacy-registrar` will allow you to register that application in Eureka. This scenario could, for example, be caused by 3rd party applications, or applications where it is 
 impossible to affect either code or deployments.
