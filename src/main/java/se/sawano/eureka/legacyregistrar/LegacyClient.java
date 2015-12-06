@@ -41,8 +41,12 @@ public class LegacyClient {
         return instanceConfig;
     }
 
-    public EurekaClientConfig getClientConfig() {
+    public EurekaClientConfig clientConfig() {
         return clientConfig;
+    }
+
+    public DiscoveryClient client() {
+        return client;
     }
 
     @PostConstruct
