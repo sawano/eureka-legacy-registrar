@@ -125,7 +125,7 @@ eureka.legacy.app1.traffic.enabled=true
 
 eureka.legacy.app2.name=legacy-app-2
 eureka.legacy.app2.vipAddress=legacy-app-2
-eureka.legacy.app2.instanceId=10.0.1.15:legacy-app-2:2
+eureka.legacy.app2.instanceId=10.0.1.15:legacy-app-2:1
 eureka.legacy.app2.hostName=10.0.1.18
 eureka.legacy.app2.ipAddress=10.0.1.18
 eureka.legacy.app2.port=8180
