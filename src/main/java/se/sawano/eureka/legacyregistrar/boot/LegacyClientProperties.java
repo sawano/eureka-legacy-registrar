@@ -20,8 +20,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.List;
 
-@ConfigurationProperties(prefix = "eureka")
-public class EurekaProperties {
+@ConfigurationProperties(prefix = "eureka.legacy.client")
+public class LegacyClientProperties {
 
     private Boolean preferSameZone;
     private Boolean shouldUseDns;

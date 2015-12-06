@@ -34,14 +34,14 @@ import static se.sawano.java.commons.lang.validate.Validate.isFalse;
 import static se.sawano.java.commons.lang.validate.Validate.noNullElements;
 
 @Configuration
-@EnableConfigurationProperties({LegacyInstances.class, EurekaProperties.class})
+@EnableConfigurationProperties({LegacyInstances.class, LegacyClientProperties.class})
 public class LegacyRegistrarConfiguration {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private LegacyInstances instances;
     @Autowired
-    private EurekaProperties properties;
+    private LegacyClientProperties properties;
     private List<LegacyClient> clients;
 
     @PostConstruct

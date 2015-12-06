@@ -44,9 +44,10 @@ An example of an `application.yml` for registering two different services, where
 
 ```yaml
 eureka:
-  serviceUrlDefault: http://localhost:8761/eureka/
-
   legacy:
+    client:
+      serviceUrlDefault: http://eureka-server-1:8761/eureka/,http://eureka-server-2:8761/eureka/
+  
     instances:
       -
         appName: legacy-app

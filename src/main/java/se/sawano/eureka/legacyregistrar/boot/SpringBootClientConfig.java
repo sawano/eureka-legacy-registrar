@@ -28,9 +28,9 @@ import static se.sawano.java.commons.lang.validate.Validate.notNull;
 public class SpringBootClientConfig implements EurekaClientConfig {
 
     private final DefaultEurekaClientConfig defaultEurekaClientConfig = new DefaultEurekaClientConfig();
-    private final EurekaProperties properties;
+    private final LegacyClientProperties properties;
 
-    public SpringBootClientConfig(final EurekaProperties properties) {
+    public SpringBootClientConfig(final LegacyClientProperties properties) {
         this.properties = notNull(properties);
     }
 
