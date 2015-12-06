@@ -40,7 +40,7 @@ public class Application {
 }
 ```
 
-An example of an `application.yml` for registering three different services, where one service have two instances:  
+An example of an `application.yml` for registering two different services, where one service have two instances:  
 
 ```yaml
 eureka:
@@ -91,7 +91,7 @@ final EurekaLegacyRegistrarApplication application = new EurekaLegacyRegistrarAp
 application.start();
 ```
 
-An example of an `eureka-client.properties` for registering three different services, where one service have two instances:  
+An example of an `eureka-client.properties` for registering two different services, where one service have two instances:  
 
 ```ini
 eureka.preferSameZone=true
