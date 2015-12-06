@@ -33,6 +33,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static java.util.Collections.unmodifiableList;
 import static se.sawano.java.commons.lang.validate.Validate.isFalse;
+import static se.sawano.java.commons.lang.validate.Validate.validState;
 
 /**
  * Use this class if you are running a pure Eureka solution. If you are using Spring Boot please see {@link EnableEurekaLegacyRegistrar}.
@@ -54,6 +55,9 @@ public class EurekaLegacyRegistrarApplication {
     private final List<LegacyClient> legacyClients = new ArrayList<>();
 
     public void start() {
+        validState(!isStarted(), "Application has already been started");
+
+        logger.debug("Starting legacy registrar...");
         init();
         started.getAndSet(true);
         logger.debug("Started successfully");
@@ -64,8 +68,12 @@ public class EurekaLegacyRegistrarApplication {
     }
 
     public void shutdown() {
-        logger.info("Shutting down...");
+        validState(isStarted(), "Application has not been started yet");
+
+        logger.debug("Shutting down legacy registrar...");
         legacyClients.forEach(this::shutdown);
+        started.getAndSet(false);
+        logger.debug("Shut down successfully");
     }
 
     private void init() {
@@ -74,7 +82,7 @@ public class EurekaLegacyRegistrarApplication {
 
         namespaces
                 .stream()
-                .map(this::createInstance)
+                .map(this::createLegacyClient)
                 .forEach(legacyClients::add);
     }
 
@@ -105,16 +113,17 @@ public class EurekaLegacyRegistrarApplication {
         return unmodifiableList(namespaces);
     }
 
-    private LegacyClient createInstance(final String namespace) {
+    private LegacyClient createLegacyClient(final String namespace) {
         logger.debug("Creating legacy instance for namespace: '{}'", namespace);
-        final LegacyClient setup = new LegacyClient(new PropertiesLegacyInstanceConfig(namespace), new DefaultEurekaClientConfig());
-        setup.init();
-        return setup;
+
+        final LegacyClient client = new LegacyClient(new PropertiesLegacyInstanceConfig(namespace), new DefaultEurekaClientConfig());
+        client.init();
+        return client;
     }
 
-    private void shutdown(final LegacyClient setup) {
+    private void shutdown(final LegacyClient client) {
         try {
-            setup.shutdown();
+            client.shutdown();
         } catch (Exception e) {
             // TODO cleanup/fix. Possibly same as: https://github.com/Netflix/eureka/issues/704
             e.printStackTrace();

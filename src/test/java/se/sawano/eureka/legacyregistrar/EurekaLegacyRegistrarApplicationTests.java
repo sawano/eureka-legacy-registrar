@@ -18,9 +18,11 @@ package se.sawano.eureka.legacyregistrar;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import se.sawano.java.commons.lang.validate.IllegalStateValidationException;
 
 import java.util.concurrent.CountDownLatch;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 public class EurekaLegacyRegistrarApplicationTests {
@@ -28,13 +30,14 @@ public class EurekaLegacyRegistrarApplicationTests {
     volatile boolean failed = false;
 
     @Test
-    public void should_create_and_start_application() throws Exception {
-        final EurekaLegacyRegistrarApplication application = new EurekaLegacyRegistrarApplication();
+    public void should_create_start_and_shutdown_application() throws Exception {
+        final EurekaLegacyRegistrarApplication application = application();
         final Thread thread = new Thread(() -> {
             application.start();
             try {
                 new CountDownLatch(1).await();
             } catch (InterruptedException e) {
+                application.shutdown();
             }
         });
         thread.setUncaughtExceptionHandler((t, e) -> {
@@ -48,6 +51,9 @@ public class EurekaLegacyRegistrarApplicationTests {
         }
         assertFalse("Application failed to start", failed);
         thread.interrupt();
+        thread.join();
+
+        assertFalse(application.isStarted());
     }
 
     @Test
@@ -55,4 +61,28 @@ public class EurekaLegacyRegistrarApplicationTests {
     public void should_start_application() throws Exception {
         EurekaLegacyRegistrarApplication.main(new String[0]);
     }
+
+    @Test
+    public void should_throw_exception_if_trying_to_start_an_already_started_application() {
+        final EurekaLegacyRegistrarApplication application = application();
+        application.start();
+
+        try {
+            application.start();
+        } catch (IllegalStateValidationException e) {
+            assertEquals("Application has already been started", e.getMessage());
+        }
+    }
+
+    @Test
+    public void should_throw_exception_if_trying_to_shutdown_an_application_that_is_not_started() {
+        try {
+            application().shutdown();
+        } catch (IllegalStateValidationException e) {
+            assertEquals("Application has not been started yet", e.getMessage());
+        }
+    }
+
+    private EurekaLegacyRegistrarApplication application() {return new EurekaLegacyRegistrarApplication();}
+
 }
