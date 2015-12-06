@@ -136,7 +136,7 @@ eureka.legacy.app2.traffic.enabled=true
 
 ##Releases
 
-Releases are available at the Maven central repository. Or you can just use the source code directly if you prefer that.
+Releases are available at the Maven central repository. Or you can just use the source code/binaries directly from GitHub if you prefer that.
 
 ####Maven
 ```xml
