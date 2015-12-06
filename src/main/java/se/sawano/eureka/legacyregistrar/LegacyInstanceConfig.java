@@ -18,7 +18,29 @@ package se.sawano.eureka.legacyregistrar;
 
 import com.netflix.appinfo.EurekaInstanceConfig;
 
-/**
- * Marker interface.
- */
-public interface LegacyInstanceConfig extends EurekaInstanceConfig {}
+public interface LegacyInstanceConfig extends EurekaInstanceConfig {
+
+    /**
+     * Gets the hostname associated with this legacy instance via configuration. This is different from a typical instance config which would return the name from the current host.
+     *
+     * @param refresh
+     *         this parameter will have no effect
+     *
+     * @return the hostname
+     *
+     * @see EurekaInstanceConfig#getHostName(boolean)
+     */
+    @Override
+    String getHostName(boolean refresh);
+
+    /**
+     * Gets the IP address associated with this legacy instance via configuration. This is different from a typical instance config which would return the address from the current host.
+     *
+     * @return th IP address
+     *
+     * @see EurekaInstanceConfig#getIpAddress()
+     */
+    @Override
+    String getIpAddress();
+
+}
