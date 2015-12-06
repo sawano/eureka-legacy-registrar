@@ -17,7 +17,6 @@
 package se.sawano.eureka.legacyregistrar.boot;
 
 import com.netflix.discovery.DefaultEurekaClientConfig;
-import com.netflix.discovery.EurekaClientConfig;
 import com.netflix.discovery.shared.transport.EurekaTransportConfig;
 
 import java.util.List;
@@ -25,7 +24,7 @@ import java.util.List;
 import static java.util.Optional.ofNullable;
 import static se.sawano.java.commons.lang.validate.Validate.notNull;
 
-public class SpringBootClientConfig implements EurekaClientConfig {
+public class SpringBootClientConfig implements LegacyClientConfig {
 
     private final DefaultEurekaClientConfig defaultEurekaClientConfig = new DefaultEurekaClientConfig();
     private final LegacyClientProperties properties;

@@ -61,6 +61,7 @@ public class LegacyRegistrarConfiguration {
 
     private LegacyClient createInstance(final SpringBootInstanceConfig instanceConfig) {
         logger.debug("Creating legacy instance for app instance: '{}'", instanceConfig.getInstanceId());
+
         final LegacyClient client = new LegacyClient(instanceConfig, new SpringBootClientConfig(properties));
         client.init();
         return client;
