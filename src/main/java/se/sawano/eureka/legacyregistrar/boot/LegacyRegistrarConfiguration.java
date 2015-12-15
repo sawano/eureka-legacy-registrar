@@ -20,10 +20,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import se.sawano.eureka.legacyregistrar.LegacyClient;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.Collections;
 import java.util.List;
@@ -42,21 +42,21 @@ public class LegacyRegistrarConfiguration {
     private LegacyInstances instances;
     @Autowired
     private LegacyClientProperties properties;
-    private List<LegacyClient> clients; // TODO expose as beans to allow access to created instances
 
-    @PostConstruct
-    public void init() {
+    @Bean
+    public LegacyClients legacyClients() {
         isFalse(instances.getInstances().isEmpty(), "No applications configured. Make sure your application.yml is present and configured correctly");
         noNullElements(instances.getInstances());
 
-        clients = instances.getInstances().stream()
-                           .map(this::createInstance)
-                           .collect(collectingAndThen(toList(), Collections::unmodifiableList));
+        final List<LegacyClient> clients = instances.getInstances().stream()
+                                                    .map(this::createInstance)
+                                                    .collect(collectingAndThen(toList(), Collections::unmodifiableList));
+        return new LegacyClients(clients);
     }
 
     @PreDestroy
     public void shutdown() {
-        clients.forEach(this::shutdown);
+        legacyClients().clients().forEach(this::shutdown);
     }
 
     private LegacyClient createInstance(final SpringBootInstanceConfig instanceConfig) {

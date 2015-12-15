@@ -18,15 +18,25 @@ package se.sawano.eureka.legacyregistrar.boot;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = ExampleBootApplication.class)
 public class ExampleBootApplicationTests {
 
+    @Autowired(required = false)
+    LegacyClients legacyClients;
+
     @Test
     public void contextLoads() {
     }
 
+    @Test
+    public void should_create_beans_with_created_clients() {
+        assertNotNull(legacyClients);
+    }
 }
