@@ -55,7 +55,7 @@ eureka:
         instanceId: 10.0.1.15:legacy-app:1 # instanceId should be unique per instance
         hostName: 10.0.1.15
         ipAddress: 10.0.1.15 # optional property ipAddress
-        port: 8080 # optional, will default to 8080
+        nonSecurePort: 8083 # optional, will default to 8080
         healthCheckUrl: http://10.0.1.15:8081/manage/health #optional
         statusPageUrl: http://10.0.1.15:8081/manage/info #optional
         instanceEnabledOnit: true #optional, will default to true
@@ -65,7 +65,7 @@ eureka:
         instanceId: 10.0.1.18:legacy-app:2
         hostName: 10.0.1.18
         ipAddress: 10.0.1.18 
-        port: 8080
+        nonSecurePort: 8083
         healthCheckUrl: http://10.0.1.18:8081/manage/health
         statusPageUrl: http://10.0.1.18:8081/manage/info
         instanceEnabledOnit: true
@@ -75,7 +75,7 @@ eureka:
         instanceId: 10.0.1.18:legacy-app-2:1
         hostName: 10.0.1.18
         ipAddress: 10.0.1.18
-        port: 8180
+        nonSecurePort: 8183
         healthCheckUrl: http://10.0.1.18:8180/
         statusPageUrl: http://10.0.1.18:8180/
         instanceEnabledOnit: true

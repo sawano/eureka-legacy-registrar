@@ -42,7 +42,7 @@ public class LegacyRegistrarConfiguration {
     private LegacyInstances instances;
     @Autowired
     private LegacyClientProperties properties;
-    private List<LegacyClient> clients;
+    private List<LegacyClient> clients; // TODO expose as beans to allow access to created instances
 
     @PostConstruct
     public void init() {
