@@ -143,13 +143,13 @@ Releases are available at the Maven central repository. Or you can just use the 
 <dependency>
     <groupId>se.sawano.eureka</groupId>
     <artifactId>legacy-registrar</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
 </dependency>
 ```
 
 ####Gradle
 ```groovy
-'se.sawano.eureka:legacy-registrar:0.0.4'
+'se.sawano.eureka:legacy-registrar:0.0.5'
 ```
 
 [travis]:https://travis-ci.org/sawano/eureka-legacy-registrar
