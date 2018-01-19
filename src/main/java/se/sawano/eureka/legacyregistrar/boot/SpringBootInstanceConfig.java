@@ -63,6 +63,7 @@ public class SpringBootInstanceConfig implements LegacyInstanceConfig {
     private String healthCheckUrlPath;
     private String healthCheckUrl;
     private String secureHealthCheckUrl;
+    private String[] defaultAddressResolutionOrder;
     private String namespace;
 
     @Override
@@ -186,6 +187,11 @@ public class SpringBootInstanceConfig implements LegacyInstanceConfig {
     }
 
     @Override
+    public String[] getDefaultAddressResolutionOrder() {
+        return defaultAddressResolutionOrder;
+    }
+
+    @Override
     public String getNamespace() {
         return namespace;
     }
@@ -280,6 +286,10 @@ public class SpringBootInstanceConfig implements LegacyInstanceConfig {
 
     public void setSecureHealthCheckUrl(final String secureHealthCheckUrl) {
         this.secureHealthCheckUrl = secureHealthCheckUrl;
+    }
+
+    public void setDefaultAddressResolutionOrder(final String[] defaultAddressResolutionOrder) {
+        this.defaultAddressResolutionOrder = defaultAddressResolutionOrder;
     }
 
     public void setNamespace(final String namespace) {
