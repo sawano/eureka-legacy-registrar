@@ -1,4 +1,4 @@
-#eureka-legacy-registrar
+# eureka-legacy-registrar
 [![][travis img]][travis]
 [![][maven img]][maven]
 [![][release img]][release]
@@ -7,24 +7,24 @@
 A small lib to allow registration of legacy applications in [Eureka](https://github.com/Netflix/eureka) service discovery. It also comes with (optional) Spring Boot support with
 annotations making it very easy to use together with Spring Boot.
  
-##Typical use cases
+## Typical use cases
 Some typical use cases where the `eureka-legacy-registrar` lib can be very useful:
 
-###You are introducing Eureka in an existing architecture
+### You are introducing Eureka in an existing architecture
 The `eureka-legacy-registrar` lib will make it very easy to register all existing services in Eureka so that new, and migrated, applications can use a Eureka-only solution rather
 than having a mix of using service discovery and the previous legacy solutions of finding services it needs to talk to.
 
 This also allows for the existing services to get Eureka-enabled independently and in a pace suitable for the respective development team. 
 
-###You are unable to affect legacy applications
+### You are unable to affect legacy applications
 If you, for whatever reason, have an existing application that you are unable to have register itself in Eureka, either by changing its codebase or by having a side-car process, then
 the `eureka-legacy-registrar` will allow you to register that application in Eureka. This scenario could, for example, be caused by 3rd party applications, or applications where it is 
 impossible to affect either code or deployments.
 
-##Examples
+## Examples
 Check out the example code in the test package for code examples.
 
-###Spring Boot example
+### Spring Boot example
 Just add the `@EnableEurekaLegacyRegistrar`annotation and appropriate configuration in your `application.yml` and you are good to go.
 
 Eg.:
@@ -81,7 +81,7 @@ eureka:
         instanceEnabledOnit: true
 ```
 
-###Non-Spring Boot example
+### Non-Spring Boot example
 Create an instance of `EurekaLegacyRegistrarApplication` and place your configuration in a file called `eureka-client.properties`.
 
 Eg.:
@@ -134,11 +134,11 @@ eureka.legacy.app2.statusPageUrl=http://10.0.1.18:8080/manage/info
 eureka.legacy.app2.traffic.enabled=true
 ```
 
-##Releases
+## Releases
 
 Releases are available at the Maven central repository. Or you can just use the source code/binaries directly from GitHub if you prefer that.
 
-####Maven
+#### Maven
 ```xml
 <dependency>
     <groupId>se.sawano.eureka</groupId>
@@ -147,7 +147,7 @@ Releases are available at the Maven central repository. Or you can just use the 
 </dependency>
 ```
 
-####Gradle
+#### Gradle
 ```groovy
 'se.sawano.eureka:legacy-registrar:0.0.5'
 ```
