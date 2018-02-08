@@ -176,6 +176,11 @@ public class PropertiesLegacyInstanceConfig implements LegacyInstanceConfig {
     }
 
     @Override
+    public String[] getDefaultAddressResolutionOrder() {
+        return config.getDefaultAddressResolutionOrder();
+    }
+
+    @Override
     public String getNamespace() {
         return config.getNamespace();
     }
